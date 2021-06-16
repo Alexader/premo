@@ -744,6 +744,7 @@ github.com/meshplus/go-bitxhub-client v1.3.1-0.20210429032628-18797624d041 h1:Kg
 github.com/meshplus/go-bitxhub-client v1.3.1-0.20210429032628-18797624d041/go.mod h1:oeX3NbSpHGsc3v2ZSAaYc+WbG9+eKhYLjGCvX/KEmhU=
 github.com/meshplus/go-bitxhub-client v1.3.1-0.20210604092745-d883783a86b3 h1:azQeQgfvLeGXApnmt80Yl4I09ZQnXrOkjZYBdT9oe6E=
 github.com/meshplus/go-bitxhub-client v1.3.1-0.20210604092745-d883783a86b3/go.mod h1:LfeKVZ6vcFFWL/sB2U7glPqvndVxTngBKCaToLLuYvg=
+github.com/meshplus/go-bitxhub-client v1.3.1-0.20210616032231-2c7bc65a68bc/go.mod h1:LfeKVZ6vcFFWL/sB2U7glPqvndVxTngBKCaToLLuYvg=
 github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b/go.mod h1:01TrycV0kFyexm33Z7vhZRXopbI8J3TDReVlkTgMUxE=
 github.com/miekg/dns v1.0.14/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nrg=
 github.com/miekg/dns v1.1.12/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nrg=

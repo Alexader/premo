@@ -58,6 +58,12 @@ var testCMD = &cli.Command{
 			Usage: "Specify appchain type: fabric:simple, fabric:complex, hpc",
 			Value: "fabric:simple",
 		},
+		&cli.IntFlag{
+			Name:    "receiptTimeInterval",
+			Aliases: []string{"rt"},
+			Value:   500,
+			Usage:   "receipt time Interval(ms)",
+		},
 	},
 	Action: benchmark,
 }
@@ -101,17 +107,19 @@ func benchmark(ctx *cli.Context) error {
 		}
 		keyPath = filepath.Join(rootPath, "node1.json")
 	}
+	receiptTimeInterval := time.Duration(ctx.Int("receiptTimeInterval")) * time.Millisecond
 	config := &bitxhub.Config{
-		Concurrent:  ctx.Int("concurrent"),
-		TPS:         ctx.Int("tps"),
-		Duration:    ctx.Int("duration"),
-		Type:        ctx.String("type"),
-		KeyPath:     keyPath,
-		BitxhubAddr: ctx.StringSlice("remote_bitxhub_addr"),
-		Validator:   string(val),
-		Proof:       proof,
-		Rule:        contract,
-		Appchain:    appchain,
+		Concurrent:          ctx.Int("concurrent"),
+		TPS:                 ctx.Int("tps"),
+		Duration:            ctx.Int("duration"),
+		Type:                ctx.String("type"),
+		KeyPath:             keyPath,
+		BitxhubAddr:         ctx.StringSlice("remote_bitxhub_addr"),
+		Validator:           string(val),
+		Proof:               proof,
+		Rule:                contract,
+		Appchain:            appchain,
+		ReceiptTimeInterval: receiptTimeInterval,
 	}
 
 	if config.Concurrent > config.TPS {

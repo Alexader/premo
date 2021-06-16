@@ -62,6 +62,7 @@ func NewBee(tps int, adminPk crypto.PrivateKey, adminFrom *types.Address, expect
 		rpcx.WithNodesInfo(node0),
 		rpcx.WithLogger(cfg.logger),
 		rpcx.WithPrivateKey(normalPk),
+		rpcx.WithReceiptTimeInterval(config.ReceiptTimeInterval),
 	)
 	if err != nil {
 		return nil, err

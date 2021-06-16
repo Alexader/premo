@@ -45,16 +45,17 @@ type Broker struct {
 }
 
 type Config struct {
-	Concurrent  int
-	TPS         int
-	Duration    int // s uint
-	Type        string
-	Validator   string
-	Proof       []byte
-	Rule        []byte
-	KeyPath     string
-	BitxhubAddr []string
-	Appchain    string
+	Concurrent          int
+	TPS                 int
+	Duration            int // s uint
+	Type                string
+	Validator           string
+	Proof               []byte
+	Rule                []byte
+	KeyPath             string
+	BitxhubAddr         []string
+	Appchain            string
+	ReceiptTimeInterval time.Duration
 }
 
 func New(config *Config) (*Broker, error) {
@@ -80,6 +81,7 @@ func New(config *Config) (*Broker, error) {
 		rpcx.WithNodesInfo(node0),
 		rpcx.WithLogger(cfg.logger),
 		rpcx.WithPrivateKey(adminPk),
+		rpcx.WithReceiptTimeInterval(config.ReceiptTimeInterval),
 	)
 	if err != nil {
 		return nil, err
