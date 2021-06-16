@@ -27,6 +27,7 @@ var sender int64
 var delayer int64
 var ibtppd []byte
 var proofHash [32]byte
+var receiptTimeInterval time.Duration
 
 type bee struct {
 	adminPrivKey  crypto.PrivateKey
@@ -64,6 +65,7 @@ func NewBee(tps int, adminPk crypto.PrivateKey, adminFrom *types.Address, expect
 		rpcx.WithPrivateKey(normalPk),
 		rpcx.WithReceiptTimeInterval(config.ReceiptTimeInterval),
 	)
+	receiptTimeInterval = config.ReceiptTimeInterval
 	if err != nil {
 		return nil, err
 	}
@@ -492,6 +494,7 @@ func (bee *bee) vote(key crypto.PrivateKey, index uint64, args ...*pb.Arg) (*pb.
 		rpcx.WithNodesInfo(&rpcx.NodeInfo{Addr: bee.config.BitxhubAddr[0]}),
 		rpcx.WithLogger(cfg.logger),
 		rpcx.WithPrivateKey(key),
+		rpcx.WithReceiptTimeInterval(receiptTimeInterval),
 	)
 	address, err := key.PublicKey().Address()
 	if err != nil {
@@ -543,6 +546,7 @@ func (bee *bee) GetChainStatusById(id string) (*pb.Receipt, error) {
 		rpcx.WithNodesInfo(&rpcx.NodeInfo{Addr: bee.config.BitxhubAddr[0]}),
 		rpcx.WithLogger(cfg.logger),
 		rpcx.WithPrivateKey(key),
+		rpcx.WithReceiptTimeInterval(receiptTimeInterval),
 	)
 	address, err := key.PublicKey().Address()
 	if err != nil {
