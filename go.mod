@@ -65,3 +65,5 @@ replace github.com/spf13/jwalterweatherman => github.com/spf13/jwalterweatherman
 replace github.com/go-kit/kit => github.com/go-kit/kit v0.8.0
 
 replace github.com/prometheus/client_golang => github.com/prometheus/client_golang v0.9.3
+
+replace github.com/meshplus/go-bitxhub-client => ../go-bitxhub-client

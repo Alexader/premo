@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"strings"
 	"sync/atomic"
 	"time"
@@ -369,6 +370,9 @@ func mockIBTP(index uint64, from, to string, proof []byte) *pb.IBTP {
 		Type:      pb.IBTP_INTERCHAIN,
 		Timestamp: time.Now().UnixNano(),
 		Proof:     proofHash[:],
+		Group: &pb.StringUint64Map{
+			Vals: []uint64{uint64(rand.Int63n(10)), uint64(rand.Int63n(10) + 10)},
+		},
 	}
 }
 
